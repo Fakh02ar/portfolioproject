@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+
+.montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .advent-pro {
+    font-family: 'Advent Pro', sans-serif;
+  }
+  .raleway {
+    font-family: 'Raleway', sans-serif;
+  }
