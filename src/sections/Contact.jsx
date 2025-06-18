@@ -9,8 +9,8 @@ const Contact = () => {
   });
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -35,28 +35,36 @@ const Contact = () => {
         </div>
 
         {/* Contact Form */}
-        <form className="mt-16 w-full space-y-10 px-4">
+        <form
+          className="mt-16 w-full space-y-10 px-4"
+          action="https://formsubmit.co/fakharzm355@gmail.com"
+          method="POST"
+        >
+          {/* Optional Hidden Inputs */}
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+
           {/* Input Fields */}
           {[
-            { id: 'name', label: 'Enter your name*', type: 'text', required: true },
-            { id: 'email', label: 'Enter your email*', type: 'email', required: true },
-            { id: 'phone', label: 'Phone number', type: 'tel', required: false },
-          ].map(({ id, label, type, required }) => (
-            <div key={id} className="relative">
+            { name: 'name', label: 'Enter your name*', type: 'text', required: true },
+            { name: 'email', label: 'Enter your email*', type: 'email', required: true },
+            { name: 'phone', label: 'Phone number', type: 'tel', required: false },
+          ].map(({ name, label, type, required }) => (
+            <div key={name} className="relative">
               <div className="absolute left-0 top-0 h-full w-[5px] bg-black" />
               <div className="absolute bottom-0 left-0 w-full h-[3px] bg-black" />
 
               <input
                 type={type}
-                id={id}
+                name={name}
                 required={required}
-                value={formData[id]}
+                value={formData[name]}
                 onChange={handleChange}
                 className="pl-4 pr-2 pt-2 pb-1 w-full bg-transparent outline-none text-gray-900 font-semibold tracking-wider uppercase"
               />
-              {formData[id] === '' && (
+              {formData[name] === '' && (
                 <label
-                  htmlFor={id}
+                  htmlFor={name}
                   className="absolute left-4 top-1 text-sm text-gray-700 uppercase tracking-wider pointer-events-none"
                 >
                   {label}
@@ -70,7 +78,7 @@ const Contact = () => {
             <div className="absolute left-0 top-0 h-full w-[5px] bg-black" />
             <div className="absolute bottom-0 left-0 w-full h-[3px] bg-black" />
             <textarea
-              id="message"
+              name="message"
               required
               rows={4}
               value={formData.message}
