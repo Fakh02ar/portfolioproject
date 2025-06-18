@@ -24,11 +24,13 @@ const About = () => {
    </div>
    
    <div className="flex justify-center mt-10">
-  <div className="relative inline-block group cursor-pointer">
-    <span className="border-l-2 border-r-2 text-center montserrat text-lg font-semibold px-8 py-2 transition-all duration-300 group-hover:bg-black group-hover:text-white group-hover:rounded group-hover:border group-hover:border-black">
-      MORE
-    </span>
-  </div>
+   <a href="https://github.com/Fakh02ar">
+            <div className="relative inline-block group cursor-pointer mt-10">
+              <span className="border-l-2 border-r-2 montserrat text-lg font-semibold text-black px-8 py-2 transition-all duration-300 group-hover:bg-black border-black group-hover:text-white group-hover:rounded group-hover:border group-hover:border-black">
+                MORE
+              </span>
+            </div>
+            </a> 
 </div>
 
 <div className="flex justify-center">

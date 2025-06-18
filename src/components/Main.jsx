@@ -42,7 +42,7 @@ const Main = () => {
             </a>
 
             <a
-              href="https://github.com"
+              href="https://github.com/Fakh02ar"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -78,12 +78,13 @@ const Main = () => {
               I love turning design ideas into interactive and functional websites.
               My goal is to build smooth, fast, and accessible digital experiences.
             </p>
-
+            <a href="https://github.com/Fakh02ar">
             <div className="relative inline-block group cursor-pointer mt-10">
               <span className="border-l-2 border-r-2 montserrat text-lg font-semibold text-white px-8 py-2 transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:rounded group-hover:border group-hover:border-white">
                 MORE
               </span>
             </div>
+            </a>  
           </div>
 
         

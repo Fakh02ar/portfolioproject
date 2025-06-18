@@ -3,15 +3,35 @@ import React, { useState, useEffect } from 'react';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeLink, setActiveLink] = useState('');
 
-  const navLinks = ['About me', 'Skills', 'Projects'];
+  const navLinks = [
+    { id: 'about', label: 'About me' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+      setScrolled(window.scrollY > 10);
+
+      const sections = ['about', 'skills', 'projects', 'contact'];
+      let found = false;
+
+      for (let section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveLink(section);
+            found = true;
+            break;
+          }
+        }
+      }
+
+      if (!found && window.scrollY < 200) {
+        setActiveLink('');
       }
     };
 
@@ -19,9 +39,17 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -80;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
-      {/* Fixed Header */}
       <div
         className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
           scrolled ? 'bg-black' : 'bg-black sm:bg-transparent'
@@ -32,36 +60,46 @@ const Header = () => {
             scrolled ? 'pt-2' : 'md:pt-[45px]'
           }`}
         >
-          {/* Logo */}
-          <div>
-            <img src="/logo.svg" alt="Logo" className="md:h-11 h-9 w-auto" />
+          {/* Logo with scroll to top */}
+          <button
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setActiveLink('');
+              setIsOpen(false); // also close mobile menu if open
+            }}
+          >
+            <img src="/logo.svg" alt="Logo" className="md:h-11 h-9 w-auto cursor-pointer" />
+          </button>
+
+          {/* Desktop Menu */}
+          <div className="hidden sm:flex items-center gap-14 text-[15px] font-[600]">
+            {navLinks.map(({ id, label }, index) => (
+              <a
+                key={index}
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(id);
+                }}
+                className={`relative montserrat hover:text-gray-400 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 ${
+                  activeLink === id ? 'after:w-full' : 'after:w-0'
+                }`}
+              >
+                {label}
+              </a>
+            ))}
+
+            <button
+              onClick={() => scrollToSection('contact')}
+              className={`border border-white px-2 py-2 rounded-full text-sm uppercase tracking-wider font-bold bg-white text-black transition duration-300 montserrat hover:bg-gray-300 cursor-pointer ${
+                activeLink === 'contact' ? 'ring-2 ring-white' : ''
+              }`}
+            >
+              Contact Me
+            </button>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden sm:block">
-            <ul className="flex gap-14 text-[15px] font-[600] items-center">
-              {navLinks.map((text, index) => (
-                <a
-                  key={index}
-                  href={text === 'About me' ? '#about' : '#'}
-                  onClick={e => {
-                    if (text === 'About me') {
-                      e.preventDefault();
-                      document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-white hover:after:w-full after:transition-all after:duration-300 hover:text-gray-400 montserrat"
-                >
-                  {text}
-                </a>
-              ))}
-              <button className="bg-white hover:bg-gray-400 text-black px-4 py-2 rounded-full font-bold text-[13px] ml-4">
-                <a href="#">CONTACT ME</a>
-              </button>
-            </ul>
-          </div>
-
-          {/* Mobile Toggle Button */}
+          {/* Mobile Toggle */}
           <div className="sm:hidden z-50 absolute right-4">
             <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
               <svg
@@ -77,8 +115,8 @@ const Header = () => {
                   strokeWidth="2"
                   d={
                     isOpen
-                      ? 'M6 18L18 6M6 6l12 12' // Cross
-                      : 'M4 6h16M4 12h16M4 18h16' // Hamburger
+                      ? 'M6 18L18 6M6 6l12 12'
+                      : 'M4 6h16M4 12h16M4 18h16'
                   }
                 />
               </svg>
@@ -92,32 +130,33 @@ const Header = () => {
             isOpen ? 'translate-y-0' : '-translate-y-full'
           }`}
         >
-          {navLinks.map((text, index) => (
+          {navLinks.map(({ id, label }, index) => (
             <a
               key={index}
-              href={text === 'About me' ? '#about' : '#'}
+              href="#"
               className="text-white text-xl font-semibold montserrat hover:text-gray-400 transition"
-              onClick={e => {
-                if (text === 'About me') {
-                  e.preventDefault();
-                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-                }
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(id);
                 setIsOpen(false);
               }}
             >
-              {text}
+              {label}
             </a>
           ))}
+
           <button
-            className="bg-white text-black px-6 py-2 rounded-full font-bold text-[13px] hover:bg-gray-300"
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              scrollToSection('contact');
+              setIsOpen(false);
+            }}
+            className="border border-white px-6 py-2 rounded text-base uppercase tracking-wider font-bold hover:bg-white hover:text-black transition duration-300 montserrat"
           >
-            CONTACT ME
+            Contact Me
           </button>
         </div>
       </div>
 
-      {/* Padding to offset fixed header */}
       <div className="pt-[100px]"></div>
     </>
   );
