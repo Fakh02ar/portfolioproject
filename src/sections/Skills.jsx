@@ -6,7 +6,7 @@ const usingSkills = [
   { name: "Tailwind", icon: "/tailwindcss.svg" },
   { name: "Javascript", icon: "/js.svg" },
   { name: "Bootstrap", icon: "/bootstrap.svg" },
-  { name: "React", icon: "/react'.svg" },
+  { name: "React", icon: "/react.svg" },
   { name: "Git", icon: "/git.svg" },
 ];
 
