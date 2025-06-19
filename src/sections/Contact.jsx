@@ -40,10 +40,9 @@ const Contact = () => {
           action="https://formsubmit.co/fakharzm355@gmail.com"
           method="POST"
         >
-          {/* Hidden Inputs */}
+          {/* Optional Hidden Inputs */}
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_next" value="https://portfolioproject-teal-delta.vercel.app//thank-you" />
 
           {/* Input Fields */}
           {[
@@ -74,7 +73,7 @@ const Contact = () => {
             </div>
           ))}
 
-          {/* Message Field */}
+          {/* Textarea Field */}
           <div className="relative mb-1">
             <div className="absolute left-0 top-0 h-full w-[5px] bg-black" />
             <div className="absolute bottom-0 left-0 w-full h-[3px] bg-black" />
