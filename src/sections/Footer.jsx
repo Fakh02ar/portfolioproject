@@ -11,7 +11,7 @@ const Footer = () => {
       {/* Back to top */}
       <div onClick={scrollToTop} className="cursor-pointer">
         <FaChevronUp className="mx-auto mb-2 text-white animate-bounce" />
-        <p className="text-[15px] tracking-[0.18em] montserratfont-semibold">BACK TO TOP</p>
+        <p className="text-[15px] tracking-[0.18em] montserrat font-semibold">BACK TO TOP</p>
       </div>
 
       {/* Social Icons */}
@@ -19,13 +19,13 @@ const Footer = () => {
         <a href="https://www.figma.com" target="_blank" rel="noreferrer">
           <FaFigma className="hover:text-gray-400 transition" />
         </a>
-        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">
+        <a href="https://linkedin.com/in/fakhar-zaman-657ba8369/" target="_blank" rel="noreferrer">
           <FaLinkedin className="hover:text-gray-400 transition" />
         </a>
         <a href="https://codepen.io" target="_blank" rel="noreferrer">
           <FaCodepen className="hover:text-gray-400 transition" />
         </a>
-        <a href="mailto:youremail@example.com">
+        <a href="mailto:fakharzm355@gmail.com">
           <FaEnvelope className="hover:text-gray-400 transition" />
         </a>
       </div>

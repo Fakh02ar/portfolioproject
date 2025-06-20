@@ -21,10 +21,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        'service_ostel8y',     // 🔁 Replace with your EmailJS Service ID
-        'template_1qk108o',    // 🔁 Replace with your Template ID
+        'service_ostel8y',     
+        'template_1qk108o',    
         formRef.current,
-        'X7ECgxy4oVgJMRCVW'      // 🔁 Replace with your Public Key (API key)
+        'X7ECgxy4oVgJMRCVW'      
       )
       .then((result) => {
         console.log('SUCCESS!', result.text);
@@ -73,7 +73,7 @@ const Contact = () => {
                 required={required}
                 value={formData[name]}
                 onChange={handleChange}
-                className="pl-4 pr-2 pt-2 pb-1 w-full bg-transparent outline-none text-gray-900 font-semibold tracking-wider uppercase"
+                className="pl-4 pr-2 pt-2 pb-1 w-full bg-transparent outline-none text-gray-900 font-semibold tracking-wider"
               />
               {formData[name] === '' && (
                 <label htmlFor={name} className="absolute left-4 top-1 text-sm text-gray-700 uppercase tracking-wider pointer-events-none">
