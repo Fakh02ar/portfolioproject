@@ -21,10 +21,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        'service_20250620_service_id',     // 🔁 Replace with your EmailJS Service ID
-        'template_20250620_template_id',    // 🔁 Replace with your Template ID
+        'service_ostel8y',     // 🔁 Replace with your EmailJS Service ID
+        'template_1qk108o',    // 🔁 Replace with your Template ID
         formRef.current,
-        'public_20250620_public_key'      // 🔁 Replace with your Public Key (API key)
+        'X7ECgxy4oVgJMRCVW'      // 🔁 Replace with your Public Key (API key)
       )
       .then((result) => {
         console.log('SUCCESS!', result.text);
