@@ -29,8 +29,9 @@ const Main = () => {
           </div>
 
           <div className="mt-8 flex items-center gap-7 justify-center">
+            {/* ✅ Fixed mailto link */}
             <a
-              href="mailto:your@email.com"
+              href="mailto:fakharzm355@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -56,6 +57,7 @@ const Main = () => {
             <a
               href="https://linkedin.com/in/fakhar-zaman-657ba8369/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <img
                 src="/linked-in.svg"
@@ -69,25 +71,22 @@ const Main = () => {
 
       {/* Next Section */}
       <section className="bg-[#111] text-white px-8 py-20">
-        <div className="">
-          <div className="">
-            <h2 className="text-3xl font-bold mb-6 montserrat">IT BERRIES</h2>
-            <p className="text-lg leading-relaxed">
-              Hi, I'm a front-end developer passionate about creating responsive and user-friendly web interfaces.
-              I specialize in HTML, CSS, JavaScript, Tailwind CSS, and modern frameworks like React.
-              I love turning design ideas into interactive and functional websites.
-              My goal is to build smooth, fast, and accessible digital experiences.
-            </p>
-            <a href="https://github.com/Fakh02ar">
+        <div>
+          <h2 className="text-3xl font-bold mb-6 montserrat">IT BERRIES</h2>
+          <p className="text-lg leading-relaxed">
+            Hi, I'm a front-end developer passionate about creating responsive and user-friendly web interfaces.
+            I specialize in HTML, CSS, JavaScript, Tailwind CSS, and modern frameworks like React.
+            I love turning design ideas into interactive and functional websites.
+            My goal is to build smooth, fast, and accessible digital experiences.
+          </p>
+
+          <a href="https://github.com/Fakh02ar">
             <div className="relative inline-block group cursor-pointer mt-10">
               <span className="border-l-2 border-r-2 montserrat text-lg font-semibold text-white px-8 py-2 transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:rounded group-hover:border group-hover:border-white">
                 MORE
               </span>
             </div>
-            </a>  
-          </div>
-
-        
+          </a>
         </div>
       </section>
     </div>
@@ -95,3 +94,5 @@ const Main = () => {
 };
 
 export default Main;
+
+
