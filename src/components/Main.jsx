@@ -55,7 +55,7 @@ const Main = () => {
             </a>
 
             <a
-              href="https://linkedin.com/in/fakhar-zaman-657ba8369/"
+              href="https://www.linkedin.com/in/fakhar-zaman-8770b8362/"
               target="_blank"
               rel="noopener noreferrer"
             >
